@@ -1,6 +1,6 @@
 import Testing
 
-@testable import Loader_Primitives
+@testable import Loader
 
 extension Loader {
     @Suite struct Tests {
