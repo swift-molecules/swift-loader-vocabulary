@@ -1,4 +1,4 @@
-# Loader
+# Loader Vocabulary
 
 ![Development Status](https://img.shields.io/badge/status-active--development-blue.svg)
 
@@ -11,7 +11,7 @@ Value-type vocabulary for the dynamic loader — library handles, symbol-lookup 
 `Loader` is the value-type vocabulary for dynamic linking: the typed shapes for library handles, symbol-lookup scopes, binary-section identifiers, and the bytes a section exposes. It holds the *shapes* only — no `dlopen`, no `dlsym`, no C imports — so the same values travel unchanged from a platform package that performs the loader calls (POSIX / Darwin / Windows) through every layer that consumes them.
 
 ```swift
-import Loader
+import Loader_Vocabulary
 
 // Symbol resolution is scoped. The two sentinels never own a closable library —
 // they say *where* to resolve a name, not *which* handle to close.
@@ -27,7 +27,7 @@ let types = Loader.Section.Name.swiftTypeMetadata
 The section payoff is safe, bounds-checked access to discovered bytes — no raw-pointer arithmetic, with lifetime enforced by the compiler:
 
 ```swift
-import Loader
+import Loader_Vocabulary
 
 // A platform package enumerates an image's sections and hands back `Bounds`.
 // `withBytes` exposes a safe `Span<UInt8>` over the section's raw bytes.
@@ -47,7 +47,7 @@ let failure: Loader.Error = .symbol(Loader.Message(ascii: "undefined symbol"))
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/swift-molecules/swift-loader.git", branch: "main")
+    .package(url: "https://github.com/swift-molecules/swift-loader-vocabulary.git", branch: "main")
 ]
 ```
 
@@ -55,7 +55,7 @@ dependencies: [
 .target(
     name: "App",
     dependencies: [
-        .product(name: "Loader", package: "swift-loader"),
+        .product(name: "Loader", package: "swift-loader-vocabulary"),
     ]
 )
 ```
@@ -66,13 +66,13 @@ Requires Swift 6.3.1 and macOS 26 / iOS 26 / tvOS 26 / watchOS 26 / visionOS 26 
 
 ## Architecture
 
-One library product. Depends only on the `String`, `Ownership`, and `ASCII` primitives.
+One library product. Depends only on the `String`, `Ownership`, and `ASCII` molecules.
 
 | Product | Target | Purpose |
 |---------|--------|---------|
-| `Loader` | `Sources/Loader/` | The `Loader` namespace: `Loader.Library.Handle`; `Loader.Symbol.Scope`; `Loader.Section` with `Name` (Mach-O / ELF / PE identifiers, plus the well-known `swiftTestContent` / `swiftTypeMetadata` sections) and `Bounds` (safe `span` / `withBytes` access); and the typed `Loader.Error` / `Loader.Message`. |
+| `Loader` | `Loader Vocabulary` | The `Loader` namespace: `Loader.Library.Handle`; `Loader.Symbol.Scope`; `Loader.Section` with `Name` (Mach-O / ELF / PE identifiers, plus the well-known `swiftTestContent` / `swiftTypeMetadata` sections) and `Bounds` (safe `span` / `withBytes` access); and the typed `Loader.Error` / `Loader.Message`. |
 
-Foundation-free.
+Composition-free.
 
 ---
 

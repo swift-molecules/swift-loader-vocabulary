@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-loader",
+    name: "swift-loader-vocabulary",
     platforms: [
         .macOS(.v27),
         .iOS(.v27),
@@ -14,7 +14,7 @@ let package = Package(
     products: [
         .library(
             name: "Loader",
-            targets: ["Loader"]
+            targets: ["Loader Vocabulary"]
         )
     ],
     dependencies: [
@@ -34,19 +34,19 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Loader",
+            name: "Loader Vocabulary",
             dependencies: [
                 .product(name: "String", package: "swift-string"),
                 .product(name: "Ownership", package: "swift-ownership"),
                 .product(name: "ASCII", package: "swift-ascii"),
 
             ],
-            path: "Sources/Loader"
+            path: "Sources/Loader Vocabulary"
         ),
         .testTarget(
-            name: "Loader Tests",
+            name: "Loader Vocabulary Tests",
             dependencies: [
-                "Loader"
+                "Loader Vocabulary"
             ]
         ),
     ],

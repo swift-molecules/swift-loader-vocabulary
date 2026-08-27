@@ -1,6 +1,6 @@
 import Testing
 
-@testable import Loader
+@testable import Loader_Vocabulary
 
 extension Loader {
     @Suite struct Tests {
