@@ -2,15 +2,6 @@ import Testing
 
 @testable import Loader_Vocabulary
 
-extension Loader {
-    @Suite struct Tests {
-        @Test func `namespace is available`() {
-
-            #expect(Bool(true))
-        }
-    }
-}
-
 extension Loader.Section.Name {
     @Suite struct Tests {
 
