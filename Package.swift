@@ -13,7 +13,7 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Loader",
+            name: "Loader Vocabulary",
             targets: ["Loader Vocabulary"]
         )
     ],
