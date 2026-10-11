@@ -1,6 +1,6 @@
 extension Loader {
 
-    public enum Error: Swift.Error, Sendable {
+    public enum Error: Swift::Error, Sendable {
 
         case open(Message)
 

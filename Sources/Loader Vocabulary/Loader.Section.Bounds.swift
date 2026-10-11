@@ -33,18 +33,18 @@ extension Loader.Section.Bounds {
     }
 
     @inlinable
-    public borrowing func withSpan<R, E: Swift.Error>(
+    public borrowing func withSpan<R, E: Swift::Error>(
         _ body: (RawSpan) throws(E) -> R
     ) throws(E) -> R {
         try body(span)
     }
 
     @inlinable
-    public borrowing func withBytes<R, E: Swift.Error>(
-        _ body: (Swift.Span<UInt8>) throws(E) -> R
+    public borrowing func withBytes<R, E: Swift::Error>(
+        _ body: (Swift::Span<UInt8>) throws(E) -> R
     ) throws(E) -> R {
         guard let baseAddress = unsafe buffer.baseAddress else {
-            let emptySpan = Swift.Span<UInt8>()
+            let emptySpan = Swift::Span<UInt8>()
             return try body(emptySpan)
         }
         let pointer = unsafe baseAddress.assumingMemoryBound(to: UInt8.self)

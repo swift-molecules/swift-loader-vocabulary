@@ -8,8 +8,8 @@ struct `Loader boundaries` {
     func `symbol scopes compare by case and handle`() {
         var first = 0
         var second = 0
-        unsafe withUnsafeMutablePointer(to: &first) { a in
-            unsafe withUnsafeMutablePointer(to: &second) { b in
+        withUnsafeMutablePointer(to: &first) { a in
+            withUnsafeMutablePointer(to: &second) { b in
                 let handleA = unsafe Loader.Library.Handle(rawValue: UnsafeMutableRawPointer(a))
                 let handleB = unsafe Loader.Library.Handle(rawValue: UnsafeMutableRawPointer(b))
 
@@ -34,7 +34,7 @@ struct `Loader boundaries` {
     @Test
     func `section bounds expose every byte of the buffer in order`() {
         let bytes: [UInt8] = [0x00, 0x7F, 0x80, 0xFF]
-        unsafe bytes.withUnsafeBytes { buffer in
+        bytes.withUnsafeBytes { buffer in
             let bounds = unsafe Loader.Section.Bounds(imageAddress: nil, buffer: buffer)
 
             #expect(bounds.withBytes { span in (0..<span.count).map { span[$0] } } == bytes)
