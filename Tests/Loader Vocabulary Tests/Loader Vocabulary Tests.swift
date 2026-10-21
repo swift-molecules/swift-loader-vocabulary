@@ -17,8 +17,7 @@ extension Loader.Section.Name {
             #expect(reconstructed.hashValue == Loader.Section.Name.swiftTestContent.hashValue)
         }
 
-        @Test func `equal content across storage representations compares equal and hashes equal`()
-        {
+        @Test func `equal content across storage representations compares equal and hashes equal`() {
 
             let inline = Loader.Section.Name(elf: StaticString(unicodeScalarLiteral: "t"))
             let pointer = Loader.Section.Name(elf: "t")
