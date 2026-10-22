@@ -1,5 +1,5 @@
-import _Concurrency
 internal import ASCII
+import _Concurrency
 public import Ownership
 public import String
 
