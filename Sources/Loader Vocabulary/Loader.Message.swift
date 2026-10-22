@@ -1,3 +1,4 @@
+import _Concurrency
 internal import ASCII
 public import Ownership
 public import String

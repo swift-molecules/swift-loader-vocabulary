@@ -1,3 +1,5 @@
+import _Concurrency
+
 extension Loader.Section {
 
     public struct Name: Sendable, Equatable, Hashable {
