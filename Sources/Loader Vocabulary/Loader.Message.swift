@@ -1,7 +1,7 @@
 internal import ASCII
-import _Concurrency
 public import Ownership
 public import String
+import _Concurrency
 
 extension Loader {
 
