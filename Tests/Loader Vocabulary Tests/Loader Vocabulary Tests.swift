@@ -2,7 +2,9 @@ import Testing
 
 @testable import Loader_Vocabulary
 
-extension Loader.Section.Name {
+enum `Loader.Section.Name Tests` {}
+
+extension `Loader.Section.Name Tests` {
     @Suite struct Tests {
 
         @Test func `equal content from distinct literals compares equal and hashes equal`() {
